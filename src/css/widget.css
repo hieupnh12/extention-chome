@@ -1,0 +1,202 @@
+#edunet-widget-root {
+  all: initial;
+  position: fixed;
+  z-index: 999999;
+}
+
+/* FAB */
+.fab {
+  width: 56px;
+  height: 56px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  font-size: 22px;
+}
+
+/* PANEL */
+.chat-panel {
+  position: fixed;
+  right: 20px;
+  bottom: -500px;
+  width: 360px;
+  height: 480px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: bottom 0.3s ease;
+  z-index: 999998;
+  overflow-y: auto;
+}
+
+.chat-panel::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px
+}
+
+/* Nền thanh cuộn */
+.chat-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Thanh kéo */
+.chat-panel::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+/* Hover vào thanh kéo */
+.chat-panel::-webkit-scrollbar-thumb:hover {
+  background: #4c5fd7;
+}
+
+.chat-panel.open {
+  bottom: 90px;
+}
+
+.chat-panel header {
+  padding: 5px;
+  font-weight: bold;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px 12px 0 0;
+  color: rgb(6, 4, 4);
+  display: flex;
+  justify-content: space-between;
+}
+.chat-panel header h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.chat-panel header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+.chat-body {
+  flex: 1;
+  padding: 12px;
+  overflow: auto;
+}
+
+.chat-panel footer {
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+.chat-panel input {
+  width: 100%;
+  padding: 8px;
+}
+
+.card {
+  background: white;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-action {
+  background: white;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #5f7ea5;
+}
+
+.card-action label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #334155;
+  text-align: start;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-close {
+  background: #3361ea;
+  color: white;
+  width: 15%;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.btn-action {
+  background: #66c9ea;
+  color: white;
+  margin: 5px 0;
+  width: 48%;
+}
+
+.btn-action-large {
+  background: #517a87;
+  color: white;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.group-action {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.group-action .btn-action:hover{
+  background: #56b8d9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.group-action .btn-action:focus,
+.group-action .btn-action-large:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.input-group input {
+  width: 100%;
+  border: 2px solid #536ea3;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+
