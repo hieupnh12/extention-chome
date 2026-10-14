@@ -1,7 +1,23 @@
 #edunet-widget-root {
   all: initial;
+  display: block;
   position: fixed;
-  z-index: 999999;
+  z-index: 2147483646;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #111827;
+}
+
+#edunet-widget-root *,
+#edunet-widget-root *::before,
+#edunet-widget-root *::after {
+  box-sizing: border-box;
 }
 
 /* FAB */
@@ -27,6 +43,7 @@
   bottom: -500px;
   width: 360px;
   height: 480px;
+  max-height: calc(100vh - 110px);
   background: white;
   border-radius: 14px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -145,7 +162,7 @@
   background: #66c9ea;
   color: white;
   margin: 5px 0;
-  width: 48%;
+  width: calc(50% - 5px);
 }
 
 .btn-action-large {
@@ -197,6 +214,34 @@
 .input-group input:focus {
   outline: none;
   border-color: #667eea;
+}
+
+.api-key-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.api-key-row input {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+}
+
+.api-key-row .btn-primary {
+  width: auto;
+  white-space: nowrap;
+}
+
+.download-wrap {
+  width: 100%;
+}
+
+.form-status {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #334155;
+  text-align: start;
 }
 
 

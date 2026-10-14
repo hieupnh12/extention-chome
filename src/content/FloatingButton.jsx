@@ -1,12 +1,24 @@
 import React, { useRef } from "react";
 
-const FloatingButton = ({ onClick }) => {
+const FloatingButton = ({ onClick, open }) => {
   const ref = useRef(null);
+
+  function handleKeyDown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onClick();
+    }
+  }
 
   return (
     <div
       ref={ref}
+      role="button"
+      tabIndex={0}
+      aria-label="Mở EduNet Assistant"
+      aria-expanded={open}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       style={{
         position: "fixed",
         bottom: "20px",
@@ -34,7 +46,10 @@ const FloatingButton = ({ onClick }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-      ></svg>
+        aria-hidden="true"
+      >
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
     </div>
   );
 };

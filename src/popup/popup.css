@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+}
+
+.popup {
+  width: 280px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.popup h1 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.popup p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.popup .hint {
+  color: #64748b;
+}
+
+.popup .ok {
+  color: #047857;
+}
+
+.popup .pending {
+  color: #b45309;
+}
