@@ -7,7 +7,7 @@ const Widget = () => {
 
   return (
     <>
-      <FloatingButton onClick={() => setOpen(!open)} />
+      <FloatingButton open={open} onClick={() => setOpen(!open)} />
       <ChatPanel open={open} onClose={() => setOpen(false)} />
     </>
   );

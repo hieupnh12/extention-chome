@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import "./css/widget.css";
+import "./css/checklist.css";
+import "./css/buttonDown.css";
 import Widget from "./content/Widget";
 function App() {
   const [count, setCount] = useState(0);

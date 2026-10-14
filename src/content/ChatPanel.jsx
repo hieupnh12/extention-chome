@@ -1,15 +1,34 @@
-import React from "react";
-import "./../css/checklist.css";
-import "./../css/buttonDown.css";
+import React, { useEffect, useState } from "react";
+import { getApiKey, setApiKey } from "../storage";
 
 const ChatPanel = ({ open, onClose }) => {
-  if (!open) return null;
+  const [apiKey, setApiKeyValue] = useState("");
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+    getApiKey().then((savedKey) => {
+      if (!cancelled && savedKey) setApiKeyValue(savedKey);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function handleSave() {
+    const saved = await setApiKey(apiKey.trim());
+    setStatus(saved ? "Đã lưu API key." : "Không lưu được API key trong trình này.");
+  }
 
   return (
-    <div className={`chat-panel ${open ? "open" : ""}`}>
+    <div
+      className={`chat-panel ${open ? "open" : ""}`}
+      aria-hidden={!open}
+      inert={!open ? true : undefined}
+    >
       <header>
         <span>EduNet Assistant</span>
-        <button onClick={onClose} className="btn btn-close">
+        <button type="button" onClick={onClose} className="btn btn-close" aria-label="Đóng">
           ✕
         </button>
       </header>
@@ -17,43 +36,45 @@ const ChatPanel = ({ open, onClose }) => {
       <div className="card">
         <div className="input-group">
           <div style={{ textAlign: "start", marginBottom: "8px" }}>
-            <label for="apiKey">Nhập API Key của bạn:</label>
+            <label htmlFor="apiKey">Nhập API Key của bạn:</label>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="api-key-row">
             <input
               type="password"
               id="apiKey"
+              value={apiKey}
+              onChange={(event) => setApiKeyValue(event.target.value)}
               placeholder="sk-ant-api03-xxxxx..."
-            ></input>
-            <div>
-              <button id="saveApiBtn" class="btn btn-primary">
-                Lưu
-              </button>
-            </div>
+              autoComplete="off"
+            />
+            <button type="button" id="saveApiBtn" className="btn btn-primary" onClick={handleSave}>
+              Lưu
+            </button>
           </div>
+          {status ? <p className="form-status">{status}</p> : null}
         </div>
       </div>
       <div className="card-action">
         <div>
-          <label for="apiKey">Action:</label>
+          <label>Action:</label>
         </div>
-        <div class="group-action">
-          <button id="testApiBtn" class="btn btn-action">
+        <div className="group-action">
+          <button type="button" id="postAnswerBtn" className="btn btn-action">
             Post answer
           </button>
-          <button id="testApiBtn" class="btn btn-action">
+          <button type="button" id="replyCommentBtn" className="btn btn-action">
             Reply comment
           </button>
-          <button id="testApiBtn" class="btn btn-action">
-            Grand group
+          <button type="button" id="gradeGroupBtn" className="btn btn-action">
+            Grade group
           </button>
-          <button id="testApiBtn" class="btn btn-action">
-            Grand presentation
+          <button type="button" id="gradePresentationBtn" className="btn btn-action">
+            Grade presentation
           </button>
-          <button id="testApiBtn" class="btn btn-action">
+          <button type="button" id="voteCommentBtn" className="btn btn-action">
             Vote comment
           </button>
-          <button id="testApiBtn" class="btn btn-action">
+          <button type="button" id="testApiBtn" className="btn btn-action">
             Test API Key
           </button>
         </div>
@@ -62,24 +83,26 @@ const ChatPanel = ({ open, onClose }) => {
       {/* Settings */}
       <div className="card-action">
         <div>
-          <label for="apiKey">Settings:</label>
+          <label>Settings:</label>
         </div>
-        <div class="group-action">
+        <div className="group-action">
           <div id="checklist">
-            <input type="checkbox" value={1} name="r" id="01" />
-            <label for="01">Bread</label>
-            <input type="checkbox" value={2} name="r" id="02" />
-            <label for="02">Cheese</label>
-            <input type="checkbox" value={3} name="r" id="03" />
-            <label for="03">Coffee</label>
+            <input type="checkbox" value="1" name="r" id="01" />
+            <label htmlFor="01">Bread</label>
+            <input type="checkbox" value="2" name="r" id="02" />
+            <label htmlFor="02">Cheese</label>
+            <input type="checkbox" value="3" name="r" id="03" />
+            <label htmlFor="03">Coffee</label>
           </div>
-          <button id="testApiBtn" class="btn btn-action">
+          <button type="button" id="runAllBtn" className="btn btn-action">
             Run all actions
           </button>
-          <div>
-<button class="button"><span>Download</span></button>
+          <div className="download-wrap">
+            <button type="button" className="button">
+              <span>Download</span>
+            </button>
           </div>
-          <button id="testApiBtn" class="btn btn-action">
+          <button type="button" id="stopBtn" className="btn btn-action">
             Stop
           </button>
         </div>

@@ -36,6 +36,6 @@ width: 100%;
 }
 
 .button:hover span:after {
- opacity: 4;
+ opacity: 1;
  right: 0;
 }
